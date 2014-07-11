@@ -3,7 +3,9 @@ var question = models.question;
 
 module.exports.show = function(req, res, next) {
 	getQuestion = function(id, next) {
-		next(id, 0, 0, "mock");
+		question.find(id).success(function(thisQuestion) {
+			next(id, thisQuestion.yes, thisQuestion.no, thisQuestion.question);
+		});
 	}
 
 	renderQuestion = function(id, yes, no, question) {

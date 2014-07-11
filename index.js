@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 app.route('/').get(controllers.questions.show);		
+app.route('view/').get(controllers.questions.show);
 app.route('/view/:id').get(controllers.questions.show);
 
 app.route('/submit').get(controllers.questions.submit);
