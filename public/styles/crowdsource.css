@@ -1,0 +1,50 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+p.question {
+  margin-top: 15px;
+  font-size: 40px;
+  padding: 15px 20px;
+  border: 2px dashed gray;
+}
+
+.jumbotron {
+  padding: 10px 10px;  
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+  margin-right: 10px;
+  padding: 7px 20px;
+  font-size: 20px;
+}
+
+
+/* Responsive Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

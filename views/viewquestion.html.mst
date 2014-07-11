@@ -1,0 +1,57 @@
+<!DOCCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crowdsource</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../public/styles/crowdsource.css" rel="stylesheet">
+    <script type="text/javascript" src="../public/scripts/jquery-2.1.1.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+			var clicked = false;
+			$('.js-yes').click(function() {
+				if (clicked) return false;
+				clicked=true;
+				$.post("/ajax/vote", {vote: "yes", questionid: parseInt($('.question').attr('value'))}, function(response) {
+					window.location.replace('/view');
+				});
+				var newval = parseInt($('.js-yes').attr("value"))+1;
+				$('.js-yes').html("Yes ("+newval+")");
+			});
+			$('.js-no').click(function() {
+				if (clicked) return false;
+				clicked=true;
+				$.post("/ajax/vote", {vote: "no", questionid: parseInt($('.question').attr('value'))}, function(response) {
+					window.location.replace('/view');
+				});
+				var newval = parseInt($('.js-no').attr("value"))+1;
+				$('.js-no').html("No ("+newval+")");
+			});
+});
+
+  </script>
+  </head>
+
+  <body>
+
+    <div class="container">  
+      <h2>Crowdsource</h2>    
+      <div class="jumbotron">
+	<a href="/view/{{id}}">Permalink: /view/{{id}}</a>
+        <p class="question" value="{{id}}">{{question}}</p>
+        <p><a class="btn btn-success js-yes" href="#" role="button" value="{{yes}}">Yes ({{yes}})</a><a class="btn btn-danger js-no" href="#" role="button" value="{{no}}">No ({{no}})</a><a class="btn btn-info" href="../submit" role="button">Submit Your Own</a></p>
+      </div>
+      <div class="footer">
+        <p>&copy; Isaac Diamond</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+
