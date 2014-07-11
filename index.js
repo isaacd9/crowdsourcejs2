@@ -13,5 +13,7 @@ app.use("/public", express.static(__dirname + '/public'));
 
 app.route('/').get(controllers.questions.show);		
 
-app.listen(8000);
-console.log("starting server on port 8000");
+
+var port = 8000;
+app.listen(port);
+console.log("starting server on port " + port);
